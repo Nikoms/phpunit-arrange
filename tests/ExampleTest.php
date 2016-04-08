@@ -192,7 +192,8 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
         $guessedDataProviderValue = sprintf('Nicolas %d', self::$callCount['provideSomeNames']);
 
         $this->assertSame($guessedDataProviderValue, $dataProviderValue);
-        $this->assertInstanceOf(User::class, $user);
+
+        //The user has the name given by the "@dataProvider"
         $this->assertSame($dataProviderValue, $user->name);
     }
 
