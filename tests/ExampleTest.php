@@ -129,7 +129,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
      * @Arrange(iAmConnectedWithTheName="Nicolas", memberOfGroup=User::GROUP_ADMIN)
      * @param User $user
      */
-    public function test_the_output_of_an_arrange_method_is_used_as_first_argument_for_the_next_input_method($user)
+    public function test_the_output_of_an_arrange_method_is_used_as_first_argument_for_the_next_arrange_method($user)
     {
         $this->assertInstanceOf(User::class, $user);
         $this->assertSame('Nicolas', $user->name);
