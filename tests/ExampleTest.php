@@ -94,7 +94,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     /**
      * @Arrange(initUserNamed="Nicolas")
      */
-    public function test_an_arrange_method_could_receives_an_argument()
+    public function test_an_arrange_method_could_receive_an_argument()
     {
         $this->assertInstanceOf(User::class, $this->user);
         $this->assertSame('Nicolas', $this->user->name);
