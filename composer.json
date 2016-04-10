@@ -1,7 +1,7 @@
 {
   "name": "nikoms/phpunit-arrange",
   "description": "arrange in annotation",
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
     {
