@@ -5,10 +5,14 @@
 
 # phpunit-arrange
 
-* Do "Arrange" (Arrange-Act-Assert style) in annotations
-* Make your tests easier to read
-* Dramatically reduce your messy "setUp" method!
-* Only put the real important mock/expect in your test method, the rest is in annotations
+## When to use it?
+
+* You want to reduce your messy "setUp" methods that init objects for ALL tests. But most of the time, they are not required all together.
+* You want to have explicit setup/arrange for each tests... Or reuse them!
+* You want to have tests easy to read
+* You want to put forward real important setup/expectations/fixtures and put the rest as annotations
+
+It's time to refactor your ugly "setUp"!
 
 ## Compatibility
 
@@ -280,6 +284,17 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     }
 }
 ```
+
+## Why calling it arrange?
+
+Because it's the name of a step in tests [as explained here](http://integralpath.blogs.com/thinkingoutloud/2005/09/principles_of_t.html).
+> **Follow the "3-As" pattern for test methods**: Arrange, Act, Assert.
+Specifically, use separate code paragraphs (groups of lines of code separated by a blank line) for each of the As.
+* ***Arrange*** is variable declaration and initialization.
+* Act is invoking the code under test.
+* Assert is using the Assert.* methods to verify that expectations were met.
+Following this pattern consistently makes it easy to revisit test code.
+
 
 ## TO DO
 
