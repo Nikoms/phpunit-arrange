@@ -10,11 +10,18 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
      * @var User
      */
     private $user;
-    static private $callCount = [
-        'dataProvider' => 0,
-        'provideSomeNames' => 0,
-    ];
+    static private $callCount = [];
     private $arrayStored;
+
+    public static function setUpBeforeClass()
+    {
+        parent::setUpBeforeClass();
+        self::$callCount = [
+            'dataProvider' => 0,
+            'provideSomeNames' => 0,
+        ];
+    }
+
 
     public function doNothing()
     {
