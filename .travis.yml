@@ -12,7 +12,7 @@ php:
 env:
 - PHPUNIT_VERSION=3.7.*
 - PHPUNIT_VERSION=4.8.*
-- PHPUNIT_VERSION=4.3.*
+- PHPUNIT_VERSION=5.3.*
 
 cache:
   directories:
