@@ -30,7 +30,7 @@ class ArrangeListener extends \PHPUnit_Framework_BaseTestListener
      */
     private function setUpContext(\PHPUnit_Framework_TestCase $testCase)
     {
-        $testMethodArguments = [];
+        $testMethodArguments = array();
         $reflectionMethod = new \ReflectionMethod($testCase, $testCase->getName(false));
 
         $parser = new DocParser();
@@ -60,7 +60,7 @@ class ArrangeListener extends \PHPUnit_Framework_BaseTestListener
         $arrangeOutput = null;
         foreach ($annotation->getMethods() as $method => $annotationArguments) {
             if (method_exists($testCase, $method)) {
-                $givenArgument = [];
+                $givenArgument = array();
 
                 if ($arrangeOutput !== null) {
                     $givenArgument[] = $arrangeOutput;
@@ -73,7 +73,7 @@ class ArrangeListener extends \PHPUnit_Framework_BaseTestListener
                 if($annotationArguments !== null){
                     $givenArgument[] = $annotationArguments;
                 }
-                $arrangeOutput = call_user_func_array([$testCase, $method], $givenArgument);
+                $arrangeOutput = call_user_func_array(array($testCase, $method), $givenArgument);
             } else {
                 trigger_error(
                     sprintf('Error on @Arrange annotation: Impossible to call "%s" method', $method),

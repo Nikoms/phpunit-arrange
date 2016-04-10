@@ -149,10 +149,10 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
      */
     public function dataProvider()
     {
-        return [
-            ['dataFromDataProvider1'],
-            ['dataFromDataProvider2'],
-        ];
+        return array(
+            array('dataFromDataProvider1'),
+            array('dataFromDataProvider2'),
+        );
     }
 
     /**
@@ -180,10 +180,10 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
      */
     public function provideNames()
     {
-        return [
-            ['Nicolas 1'],
-            ['Nicolas 2'],
-        ];
+        return array(
+            array('Nicolas 1'),
+            array('Nicolas 2'),
+        );
     }
 
     /**
@@ -217,9 +217,9 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
      */
     public function provideName()
     {
-        return [
-            ['Nicolas', 'Laura'],
-        ];
+        return array(
+            array('Nicolas', 'Laura'),
+        );
     }
 
     /**
@@ -236,11 +236,11 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
         $receivedArrangeArguments
     ) {
         $this->assertSame(
-            [
+            array(
                 'Nicolas',
                 'Laura',
                 'annotation argument'
-            ],
+            ),
             $receivedArrangeArguments
         );
     }
@@ -260,10 +260,10 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     function test_arrange_method_receives_an_array_when_array_is_given()
     {
         $this->assertSame(
-            [
+            array(
                 'country' => 'BE',
                 'user' => 'Nicolas',
-            ],
+            ),
             $this->arrayStored
         );
     }

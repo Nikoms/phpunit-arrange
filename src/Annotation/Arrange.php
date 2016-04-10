@@ -7,13 +7,16 @@ namespace Nikoms\PhpUnit\Annotation;
  */
 class Arrange
 {
-    private $methods = [];
+    /**
+     * @var array
+     */
+    private $methods;
 
     /**
      * Arrange constructor.
      * @param array $values
      */
-    public function __construct($values)
+    public function __construct(array $values)
     {
         if (isset($values['value'])) {
             $this->methods[$values['value']] = null;
