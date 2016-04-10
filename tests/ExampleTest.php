@@ -16,10 +16,10 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
-        self::$callCount = [
+        self::$callCount = array(
             'dataProvider' => 0,
             'provideSomeNames' => 0,
-        ];
+        );
     }
 
 
