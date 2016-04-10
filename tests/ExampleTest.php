@@ -198,15 +198,59 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     }
 
 
-    public function storeArray($dataToStore)
+    /**
+     */
+    public function returnAllReceivesArguments()
     {
+        return func_get_args();
+    }
+
+    /**
+     * @return array
+     */
+    public function provideName()
+    {
+        return [
+            ['Nicolas', 'Laura'],
+        ];
+    }
+
+    /**
+     * @dataProvider provideName
+     * @Arrange(returnAllReceivesArguments="annotation argument")
+     *
+     * @param $firstDataProvider
+     * @param $secondDataProvider
+     * @param array $receivedArrangeArguments
+     */
+    public function test_arrange_method_receives_first_data_provider_values_then_annotation_argument(
+        $firstDataProvider,
+        $secondDataProvider,
+        $receivedArrangeArguments
+    ) {
+        $this->assertSame(
+            [
+                'Nicolas',
+                'Laura',
+                'annotation argument'
+            ],
+            $receivedArrangeArguments
+        );
+    }
+
+
+    public
+    function storeArray(
+        $dataToStore
+    ) {
         $this->arrayStored = $dataToStore;
     }
 
     /**
      * @Arrange(storeArray={"country"="BE","user"="Nicolas"})
      */
-    public function test_arrange_method_receives_an_array_when_array_is_given()
+    public
+    function test_arrange_method_receives_an_array_when_array_is_given()
     {
         $this->assertSame(
             [
