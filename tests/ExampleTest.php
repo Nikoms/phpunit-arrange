@@ -10,7 +10,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
      * @var User
      */
     private $user;
-    static private $callCount = [];
+    static private $callCount = array();
     private $arrayStored;
 
     public static function setUpBeforeClass()
@@ -74,7 +74,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
      */
     public function memberOfGroup($user, $group = '')
     {
-        $this->assertInstanceOf(User::class, $user);
+        $this->assertInstanceOf('Nikoms\PhpUnit\User', $user);
         $user->group = $group;
 
         return $user;
@@ -94,7 +94,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
      */
     public function test_an_existing_method_is_called_before_the_test()
     {
-        $this->assertInstanceOf(User::class, $this->user);
+        $this->assertInstanceOf('Nikoms\PhpUnit\User', $this->user);
         $this->assertTrue($this->user->isConnected);
     }
 
@@ -103,7 +103,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
      */
     public function test_an_arrange_method_could_receive_an_argument()
     {
-        $this->assertInstanceOf(User::class, $this->user);
+        $this->assertInstanceOf('Nikoms\PhpUnit\User', $this->user);
         $this->assertSame('Nicolas', $this->user->name);
     }
 
@@ -114,7 +114,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     {
         $args = func_get_args();
         $this->assertCount(1, $args);
-        $this->assertInstanceOf(User::class, $args[0]);
+        $this->assertInstanceOf('Nikoms\PhpUnit\User', $args[0]);
         $this->assertTrue($args[0]->isConnected);
         $this->assertSame('Nicolas', $args[0]->name);
     }
@@ -138,7 +138,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
      */
     public function test_the_output_of_an_arrange_method_is_used_as_first_argument_for_the_next_arrange_method($user)
     {
-        $this->assertInstanceOf(User::class, $user);
+        $this->assertInstanceOf('Nikoms\PhpUnit\User', $user);
         $this->assertSame('Nicolas', $user->name);
         $this->assertTrue($user->isConnected);
         $this->assertSame(User::GROUP_ADMIN, $user->group);
@@ -170,7 +170,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($dataProviderValue, $args[0]);
 
         //Second argument is a user connected
-        $this->assertInstanceOf(User::class, $args[1]);
+        $this->assertInstanceOf('Nikoms\PhpUnit\User', $args[1]);
         $this->assertTrue($args[1]->isConnected);
     }
 
