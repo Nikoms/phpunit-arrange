@@ -78,7 +78,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     /**
      * @Arrange("initConnectedUser")
      */
-    public function testSomething(User $user)
+    public function testSomething()
     {
         $this->assertSame('Nicolas', $this->user->name);
         // Do something with your $this->user..
