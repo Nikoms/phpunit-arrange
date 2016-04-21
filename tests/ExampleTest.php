@@ -28,6 +28,9 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    /**
+     * @Arrange(describe="the user initialized is connected")
+     */
     public function initConnectedUser()
     {
         $this->user = new User();
@@ -35,6 +38,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @Arrange(describe="the user initialized is named '%s'")
      * @param string $name
      */
     public function initUserNamed($name)
@@ -44,9 +48,10 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @Arrange(describe="The user is connected")
      * @return User
      */
-    public function iAmAConnectedUser()
+    public function theUserIsConnected()
     {
         $user = new User();
         $user->isConnected = true;
@@ -55,10 +60,11 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @Arrange(describe="the connected user is named '%s'")
      * @param string $name
      * @return User
      */
-    public function iAmConnectedWithTheName($name)
+    public function theConnectedUserIsNamed($name)
     {
         $user = new User();
         $user->isConnected = true;
@@ -68,6 +74,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @Arrange(describe="%s is a member of the group '%s'")
      * @param User $user
      * @param string $group
      * @return User
@@ -83,7 +90,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     /**
      * @Arrange("methodDoesNotExist")
      */
-    public function test_a_non_existing_method_should_not_trigger_error()
+    public function test_a_non_existing_method_should_only_trigger_a_notice()
     {
         //Nothing is broken when the method does not exist
         $this->assertTrue(true);
@@ -108,9 +115,10 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Arrange(iAmConnectedWithTheName="Nicolas")
+     * @testdox the user is passed to the test method
+     * @Arrange(theConnectedUserIsNamed="Nicolas")
      */
-    public function test_when_an_arrange_method_returns_something_then_it_is_passed_in_the_test_method()
+    public function test_when_an_arrange_method_returns_something_then_it_is_passed_to_the_test_method()
     {
         $args = func_get_args();
         $this->assertCount(1, $args);
@@ -120,9 +128,9 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Arrange(iAmConnectedWithTheName="Nicolas")
+     * @Arrange(theConnectedUserIsNamed="Nicolas")
      * @Arrange("doNothing")
-     * @Arrange(iAmConnectedWithTheName="Laura")
+     * @Arrange(theConnectedUserIsNamed="Laura")
      * @param User $nicolas
      * @param User $laura
      */
@@ -133,7 +141,8 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @Arrange(iAmConnectedWithTheName="Nicolas", memberOfGroup=User::GROUP_ADMIN)
+     * @testdox the user has the given name and the given group
+     * @Arrange(theConnectedUserIsNamed="Nicolas", memberOfGroup=User::GROUP_ADMIN)
      * @param User $user
      */
     public function test_the_output_of_an_arrange_method_is_used_as_first_argument_for_the_next_arrange_method($user)
@@ -157,7 +166,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider dataProvider
-     * @Arrange("iAmAConnectedUser")
+     * @Arrange("theUserIsConnected")
      */
     public function test_data_from_arrange_method_comes_after_the_data_from_data_provider()
     {
@@ -188,7 +197,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider provideNames
-     * @Arrange("iAmConnectedWithTheName")
+     * @Arrange("theConnectedUserIsNamed")
      *
      * @param string $dataProviderValue
      * @param User $user
@@ -223,8 +232,8 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider provideName
      * @Arrange(returnAllReceivesArguments="annotation argument")
+     * @dataProvider provideName
      *
      * @param $firstDataProvider
      * @param $secondDataProvider
@@ -239,15 +248,14 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
             array(
                 'Nicolas',
                 'Laura',
-                'annotation argument'
+                'annotation argument',
             ),
             $receivedArrangeArguments
         );
     }
 
 
-    public
-    function storeArray(
+    public function storeArray(
         $dataToStore
     ) {
         $this->arrayStored = $dataToStore;
@@ -256,8 +264,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     /**
      * @Arrange(storeArray={"country"="BE","user"="Nicolas"})
      */
-    public
-    function test_arrange_method_receives_an_array_when_array_is_given()
+    public function test_arrange_method_receives_an_array_when_array_is_given()
     {
         $this->assertSame(
             array(
