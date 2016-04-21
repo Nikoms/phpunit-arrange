@@ -1,7 +1,7 @@
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/772fac18-f9cd-47dd-a6e0-420acfa1d815/mini.png)](https://insight.sensiolabs.com/projects/772fac18-f9cd-47dd-a6e0-420acfa1d815)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/Nikoms/phpunit-arrange/badges/quality-score.png)](https://scrutinizer-ci.com/g/Nikoms/phpunit-arrange/)
 [![Code Coverage](https://scrutinizer-ci.com/g/Nikoms/phpunit-arrange/badges/coverage.png)](https://scrutinizer-ci.com/g/Nikoms/phpunit-arrange/)
-
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/Nikoms/phpunit-arrange/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Nikoms/phpunit-arrange/)
 
 # phpunit-arrange
 
