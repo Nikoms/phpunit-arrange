@@ -298,4 +298,7 @@ Following this pattern consistently makes it easy to revisit test code.
 
 ## TO DO
 
-* Try to integrate it in "--testdox"
+* Refac a little
+* Make an HTML testdox to have a nice BDD style output
+* Unit test Listener & printer... Even if it's already tested with the tests/ExampleTest.php
+* Add the possibility to add "ignoredAnnotationNames" in annotationReaderFactory
